@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/AspNetCore.Docs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CsvHelper" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/EmmaSharp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/EmmaSharpDotNetCore/EmmaSharp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MSSQL-Database-Tools" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/csv-helper-issue" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/dumb-password-rules" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git-blame-someone-else" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/keepassxc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/nand2tetris" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/sfwin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/workspace" vcs="Git" />
+  </component>
+</project>
