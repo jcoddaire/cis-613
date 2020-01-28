@@ -29,7 +29,6 @@ class TriangleTest {
 		}
 		// if the parameters are valid, see if we get the correct triangle type.
 		else {
-			// 
 			assertEquals(expectedResult, Triangle.type(a, b, c));	
 		}
 	}
