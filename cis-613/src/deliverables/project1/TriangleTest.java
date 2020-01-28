@@ -45,22 +45,26 @@ class TriangleTest {
 		for (int i = 0; i < values.length; i++) {
 			for (int j = 0; j < values.length; j++) {
 				for (int k = 0; k < values.length; k++) {
+
+					int a = values[i];
+					int b = values[j];
+					int c = values[k];
 					
 					String triangleType;
-					if(!((i < j + k) && (j < i + k) && (k < i + j))) {
+					if(!((a < b + c) && (b < a + c) && (c < a + b))) {
 						triangleType = "NotATriangle";
 					}
 					else {
-						if (i == j && j == k) {
+						if (a == b && b == c) {
 							triangleType = "Equilateral";
-						} else if (i != j && i != k && j != k) {
+						} else if (a != b && a != c && b != c) {
 							triangleType = "Scalene";
 						} else {
 							triangleType = "Isosceles";
 						}
 					}
 					
-					argsList.add(arguments(values[i],values[j], values[k], triangleType));
+					argsList.add(arguments(a, b, c, triangleType));
 				}
 			}
 		}
