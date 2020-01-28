@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.params.provider.Arguments.*;
 
+import java.text.SimpleDateFormat;
 import java.util.stream.Stream;
 import java.util.*;
 
@@ -19,6 +20,23 @@ class DateTest {
 		
 		// COMPLETE THIS METHOD
 		
+		boolean c1 = 1 <= month && month <= 12;
+		boolean c2 = 1 <= day && day <= 31;
+		boolean c3 = 1812 <= year && year <= 2012;
+
+		// if the parameters are not valid, check for an exception to be thrown.
+		if(!(c1 && c2 && c3)) {
+			assertThrows(InvalidValueException.class,() -> Date.nextDate(month, day, year));
+		}
+		// if the parameters are valid, see if we get the correct triangle type.
+		else {
+			try{
+				assertEquals(expectedResult, Date.nextDate(month, day, year));
+			}
+			catch(InvalidDateException ex){
+				assertThrows(InvalidDateException.class,() -> Date.nextDate(month, day, year));
+			}
+		}
 	}
 	
 	static Stream<Arguments> dataProviderForAllTestCases() {
@@ -31,6 +49,21 @@ class DateTest {
 		//
 		// COMPLETE THIS SECTION OF METHOD
 		//
+
+		for (int i = 0; i < months.length; i++) {
+			for (int j = 0; j < days.length; j++) {
+				for (int k = 0; k < years.length; k++) {
+
+					int a = months[i];
+					int b = days[j];
+					int c = years[k];
+
+					String expectedNextDate = expectedOutput(a, b, c);
+
+					argsList.add(arguments(a, b, c, expectedNextDate));
+				}
+			}
+		}
 		
 		Arguments[] args = argsList.toArray(new Arguments[argsList.size()]);
 		return Stream.of(args);
@@ -43,7 +76,7 @@ class DateTest {
 		try {
 			GregorianCalendar g = new GregorianCalendar();
 			g.setLenient(false);
-			
+
 			//
 			// TO DO:
 			//		use set() and add() methods of GregorianCalendar class to
@@ -52,9 +85,17 @@ class DateTest {
 			//
 			//		construct string representation of object g in format "MM/DD/YYYY"
 			//
-			
-			return "";	// replace this with the string constructed above
-			
+
+			g.set(Calendar.YEAR, year);
+			g.set(Calendar.MONTH, month - 1);
+			g.set(Calendar.DAY_OF_MONTH, day);
+
+			g.add(GregorianCalendar.DAY_OF_YEAR, 1);
+
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+
+			return formatter.format(g.getTime());
+
 		} catch (IllegalArgumentException ex) {
 			return "InvalidDateException";
 		}
