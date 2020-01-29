@@ -16,15 +16,10 @@ class TriangleTest {
 	@MethodSource({"dataProviderForAllTestCases"})
 	void testAll(int a, int b, int c, String expectedResult) throws InvalidValueException {
 		
-		// COMPLETE THIS METHOD		
-		
-		// First determine if the parameters are a valid triangle.
-		boolean c1 = 1 <= a && a <= 200;
-		boolean c2 = 1 <= b && b <= 200;
-		boolean c3 = 1 <= c && c <= 200;
+		// COMPLETE THIS METHOD
 		
 		// if the parameters are not valid, check for an exception to be thrown.
-		if(!(c1 && c2 && c3)) {
+		if(expectedResult.equals(("InvalidValueException"))) {
 			assertThrows(InvalidValueException.class,() -> Triangle.type(a, b, c));
 		}
 		// if the parameters are valid, see if we get the correct triangle type.
@@ -48,22 +43,30 @@ class TriangleTest {
 					int a = values[i];
 					int b = values[j];
 					int c = values[k];
-					
-					String triangleType;
-					if(!((a < b + c) && (b < a + c) && (c < a + b))) {
-						triangleType = "NotATriangle";
+
+					boolean c1 = 1 <= a && a <= 200;
+					boolean c2 = 1 <= b && b <= 200;
+					boolean c3 = 1 <= c && c <= 200;
+
+					String expectedResult;
+
+					if (!(c1&& c2 && c3)) {
+						expectedResult = "InvalidValueException";
+					}
+					else if(!((a < b + c) && (b < a + c) && (c < a + b))) {
+						expectedResult = "NotATriangle";
 					}
 					else {
 						if (a == b && b == c) {
-							triangleType = "Equilateral";
+							expectedResult = "Equilateral";
 						} else if (a != b && a != c && b != c) {
-							triangleType = "Scalene";
+							expectedResult = "Scalene";
 						} else {
-							triangleType = "Isosceles";
+							expectedResult = "Isosceles";
 						}
 					}
 					
-					argsList.add(arguments(a, b, c, triangleType));
+					argsList.add(arguments(a, b, c, expectedResult));
 				}
 			}
 		}

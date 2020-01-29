@@ -19,23 +19,15 @@ class DateTest {
 											throws InvalidValueException, InvalidDateException {
 		
 		// COMPLETE THIS METHOD
-		
-		boolean c1 = 1 <= month && month <= 12;
-		boolean c2 = 1 <= day && day <= 31;
-		boolean c3 = 1812 <= year && year <= 2012;
 
-		// if the parameters are not valid, check for an exception to be thrown.
-		if(!(c1 && c2 && c3)) {
+		if(expectedResult.equals("InvalidValueException")) {
 			assertThrows(InvalidValueException.class,() -> Date.nextDate(month, day, year));
 		}
-		// if the parameters are valid, see if we get the correct triangle type.
+		else if(expectedResult.equals("InvalidDateException")) {
+			assertThrows(InvalidDateException.class,() -> Date.nextDate(month, day, year));
+		}
 		else {
-			try{
-				assertEquals(expectedResult, Date.nextDate(month, day, year));
-			}
-			catch(InvalidDateException ex){
-				assertThrows(InvalidDateException.class,() -> Date.nextDate(month, day, year));
-			}
+			assertEquals(expectedResult, Date.nextDate(month, day, year));
 		}
 	}
 	
