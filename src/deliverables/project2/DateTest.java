@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 class DateTest {
@@ -42,9 +43,15 @@ class DateTest {
 			GregorianCalendar g = new GregorianCalendar();
 			g.setLenient(false);
 
-			// TO DO: Same as in Project 1
-			
-			return "";
+			g.set(Calendar.YEAR, year);
+			g.set(Calendar.MONTH, month - 1);
+			g.set(Calendar.DAY_OF_MONTH, day);
+
+			g.add(GregorianCalendar.DAY_OF_YEAR, 1);
+
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+
+			return formatter.format(g.getTime());
 			
 		} catch (IllegalArgumentException ex) {
 			return "InvalidDateException";
