@@ -25,7 +25,7 @@ class DateTest {
 		int[] years = {1811, 1996, 2000, 2002, 2013};
 		
 		try {
-			File file = new File("src/ECT-Data.csv");
+			File file = new File("src/deliverables/project2/ECT-Data.csv");
 			if (!file.exists()) {
 				// TO DO: create the comma delimited data file: month,day,year,expectedoutput
 
