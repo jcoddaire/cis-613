@@ -72,10 +72,10 @@ class DateTest {
 			throws deliverables.project2.InvalidValueException, deliverables.project2.InvalidDateException {
 
 		if(expectedResult.equals("InvalidValueException")) {
-			assertThrows(deliverables.project1.InvalidValueException.class,() -> deliverables.project1.Date.nextDate(month, day, year));
+			assertThrows(deliverables.project2.InvalidValueException.class,() -> deliverables.project2.Date.nextDate(month, day, year));
 		}
 		else if(expectedResult.equals("InvalidDateException")) {
-			assertThrows(deliverables.project1.InvalidDateException.class,() -> deliverables.project1.Date.nextDate(month, day, year));
+			assertThrows(deliverables.project2.InvalidDateException.class,() -> deliverables.project2.Date.nextDate(month, day, year));
 		}
 		else {
 			assertEquals(expectedResult, deliverables.project2.Date.nextDate(month, day, year));
