@@ -1,5 +1,3 @@
-package deliverables.project2;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -25,9 +23,8 @@ class DateTest {
 		int[] years = {1811, 1996, 2000, 2002, 2013};
 		
 		try {
-			File file = new File("src/deliverables/project2/ECT-Data.csv");
+			File file = new File("src/ECT-Data.csv");
 			if (!file.exists()) {
-				// TO DO: create the comma delimited data file: month,day,year,expectedoutput
 
 				ArrayList<String> argsList = new ArrayList<String>();
 
@@ -69,16 +66,16 @@ class DateTest {
 	@ParameterizedTest
 	@CsvFileSource(resources = "ECT-Data.csv")
 	void testAll(int month, int day, int year, String expectedResult)
-			throws deliverables.project2.InvalidValueException, deliverables.project2.InvalidDateException {
+			throws InvalidValueException, InvalidDateException {
 
 		if(expectedResult.equals("InvalidValueException")) {
-			assertThrows(deliverables.project2.InvalidValueException.class,() -> deliverables.project2.Date.nextDate(month, day, year));
+			assertThrows(InvalidValueException.class,() -> Date.nextDate(month, day, year));
 		}
 		else if(expectedResult.equals("InvalidDateException")) {
-			assertThrows(deliverables.project2.InvalidDateException.class,() -> deliverables.project2.Date.nextDate(month, day, year));
+			assertThrows(InvalidDateException.class,() -> Date.nextDate(month, day, year));
 		}
 		else {
-			assertEquals(expectedResult, deliverables.project2.Date.nextDate(month, day, year));
+			assertEquals(expectedResult, Date.nextDate(month, day, year));
 		}
 	}
 	

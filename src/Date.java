@@ -1,5 +1,3 @@
-package deliverables.project2;
-
 public class Date {
 	
 	public static String nextDate(int month, int day, int year) 
