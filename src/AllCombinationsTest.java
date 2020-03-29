@@ -8,21 +8,21 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.util.*;
 
-class DateECTest {
+class AllCombinationsTest {
 	
 	@BeforeAll
 	public static void prepareTestData() {
-		// nominal values from valid equivalence classes M1, M2, M3, and M4
-		int[] months = {2, 6, 7, 12};
+		// nominal values from valid & invalid equivalence classes M1, M2, M3, M4, M5, M6
+		int[] months = {6, 7, 2, 12, 0, 13};
 		
-		// nominal values from valid equivalence classes D1, D2, D3, D4, and D5
-		int[] days = {14, 28, 29, 30, 31};
+		// nominal values from valid & invalid equivalence classes D1, D2, D3, D4, D5, D6, D7
+		int[] days = {14, 28, 29, 30, 31, 0, 32};
 		
-		// nominal values from valid equivalence classes Y1, Y2, and Y3
-		int[] years = {1996, 2000, 2002};
+		// nominal values from valid & invalid equivalence classes Y1, Y2, Y3, Y4, Y5
+		int[] years = {2000, 1996, 2002, 1811, 2013};
 		
 		try {
-			File file = new File("src/ECT-Data.csv");
+			File file = new File("src/AllCombinations-Data.csv");
 			if (!file.exists()) {
 				FileWriter outFile = new FileWriter(file);
 		
@@ -42,7 +42,7 @@ class DateECTest {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "ECT-Data.csv")
+	@CsvFileSource(resources = "AllCombinations-Data.csv")
 	public void testAll(int month, int day, int year, String expectedResult)
 											throws InvalidValueException, InvalidDateException {
 		if (expectedResult.equals("InvalidValueException")) {

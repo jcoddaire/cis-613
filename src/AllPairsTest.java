@@ -3,10 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-class DateDTTest {
+class AllPairsTest {
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "DTT-Data.csv")
+	@CsvFileSource(resources = "AllPairs-Data.csv")
 	public void testAll(int month, int day, int year, String expectedResult) {
 		// Test assertions using a different approach
 		try {
