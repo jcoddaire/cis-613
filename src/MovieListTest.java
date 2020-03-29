@@ -40,8 +40,9 @@ public class MovieListTest {
 		IMovie movie = new Movie("Lion King", 4, Category.ANIMATION);
 		
 		// Step 2 - TO DO
+		mockObserver.movieAdded((movie));
+		expectLastCall();
 
-		
 		// Step 3
 		replay(mockObserver);
 		
@@ -63,7 +64,8 @@ public class MovieListTest {
 		IMovie movie = new Movie("Lion King", 4, Category.ANIMATION);
 		
 		// Step 2 - TO DO
-
+		mockObserver.movieAdded((movie));
+		expectLastCall();
 		
 		// Step 3
 		replay(mockObserver);
@@ -91,8 +93,11 @@ public class MovieListTest {
 		try {
 			// Steps 5 and 7 - TO DO
 			IMovie movie = null;
-			
-			
+			movies.addMovie(movie);
+
+			assertFalse(movies.contains(movie));
+			assertEquals(0, movies.size());
+
 		} catch (DuplicateMovieException ex) {}
 		
 		// Step 6
@@ -108,9 +113,10 @@ public class MovieListTest {
 		
 		// Step 2 - TO DO
 
-		
-		
-		
+		mockObserver.movieAdded((movie));
+		mockObserver.movieRemoved((movie));
+		expectLastCall();
+
 		// Step 3
 		replay(mockObserver);
 		
@@ -136,8 +142,7 @@ public class MovieListTest {
 		replay(mockObserver);
 		
 		// Steps 5 and 7 - TO DO
-
-		
+		assertFalse(movies.contains(movie));
 		
 		// Step 6
 		verify(mockObserver);
@@ -152,7 +157,7 @@ public class MovieListTest {
 		replay(mockObserver);
 		
 		// Steps 5 and 7 - TO DO
-		
+		assertFalse(movies.removeMovie(movie));
 		
 		// Step 6
 		verify(mockObserver);
